@@ -10,8 +10,7 @@ while n == True:
     cadastrados.append(pessoa[:])
     validacao = str(input('\nDeseja cadastrar outra pessoa? [S/N]: ')).upper()
     print('\n')
-    pessoa.pop()
-    pessoa.pop()
+    pessoa.clear()
     if validacao != 'S':
         break
 print(f'*' * 37)
