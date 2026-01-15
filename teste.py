@@ -1,25 +1,25 @@
-print(f'\n*** CADASTRO DE PESSOAS ***\n')
-n = True
-cadastrados = list()
-pessoa = list()
-while n == True:
-    reg_nome = str(input('Digite o nome da pessoa: '))
-    pessoa.append(reg_nome)
-    reg_idade = int(input(f'Digite a idade do(a) {reg_nome}: '))
-    pessoa.append(reg_idade)
-    cadastrados.append(pessoa[:])
-    validacao = str(input('\nDeseja cadastrar outra pessoa? [S/N]: ')).upper()
-    print('\n')
-    pessoa.clear()
-    if validacao != 'S':
-        break
-print(f'*' * 37)
-print(f'*** LISTA DE PESSOAS CADASTRADAS ***')
-print(f'*' * 37)
-for i in range(0, len(cadastrados)):
-    if cadastrados[i][1] == 1:
-        print(f'{cadastrados[i][0]:12} com {cadastrados[i][1]:3} ano  de idade')
-    else:
-        print(f'{cadastrados[i][0]:12} com {cadastrados[i][1]:3} anos de idade')
-print(f'*' * 37)
-print('\n')
+def notas(*num, sit=False):
+    """
+    --> Função para analisar notas e situações de vários alunos
+    
+    :param num: Uma ou mais notas dos alunos (aceita várias)
+    :param sit: valor opcional, indicando se deve ou não adicionar a situação
+    :return: dicionário com várias informações sobre a situação da turma
+    """
+    D = {}
+    D['total'] = len(num)
+    D['maior'] = max(num)
+    D['menor'] = min(num)
+    D['média'] = sum(num)/len(num)
+    if sit:
+        if D['média'] >= 7:
+            D['situação'] = 'BOA'
+        elif D['média'] >= 5:
+            D['situação'] = 'RAZOÁVEL'
+        else:
+            D['situação'] = 'RUIM'
+    return D
+
+#Programa Principal
+resp = notas(5.5, 9.5, 10, 6.5, 7, 10, 9.5, 8.3, 8.3, sit=True)
+print(resp)
